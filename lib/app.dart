@@ -5,6 +5,7 @@ import 'package:basic_requirements_package/core/init/theme/light/light_theme_cus
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,15 +14,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeMode>(
       builder: (context, themeState) {
-        return MaterialApp.router(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          theme: LightThemeCustom().theme,
-          darkTheme: DarkThemeCustom().theme,
-          themeMode: themeState,
-          routerConfig: NavigationRoute.router,
-          debugShowCheckedModeBanner: false,
+        return ScreenUtilInit(
+          designSize: const Size(375, 812),
+          builder: (context, child) {
+           return  MaterialApp.router(
+             localizationsDelegates: context.localizationDelegates,
+             supportedLocales: context.supportedLocales,
+             locale: context.locale,
+             theme: LightThemeCustom().theme,
+             darkTheme: DarkThemeCustom().theme,
+             themeMode: themeState,
+             routerConfig: NavigationRoute.router,
+             debugShowCheckedModeBanner: false,
+           );
+          }
         );
       },
     );

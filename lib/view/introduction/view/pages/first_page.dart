@@ -14,8 +14,8 @@ class FirstPage {
 
 class PageContent extends StatelessWidget {
   const PageContent({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

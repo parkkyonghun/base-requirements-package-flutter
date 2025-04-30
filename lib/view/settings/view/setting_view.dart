@@ -7,6 +7,9 @@ import 'package:basic_requirements_package/product/widget/appbar/setting_appbar.
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/init/navigation/navigation_route.dart';
+import '../../_product/enum/route_enum.dart';
+
 class SettingView extends StatelessWidget {
   const SettingView({super.key});
 
@@ -30,6 +33,18 @@ class SettingView extends StatelessWidget {
             alertTitle: LocaleKeys.localizationLangChoose.tr(),
             child: changeLocalWithDropdown(context),
           ),
+      InkWell(
+        onTap: () {
+          NavigationRoute.goRouteClear(RouteEnum.loginPage.rawValue);
+        },
+        child: ListTile(
+          leading: Icon(Icons.login_rounded),
+          title: Text(
+            "Login",
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ),
+      )
         ],
       ),
     );
